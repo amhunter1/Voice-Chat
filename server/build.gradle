@@ -1,0 +1,32 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    implementation project(':common')
+
+    // Logging implementation
+    implementation 'ch.qos.logback:logback-classic:1.4.11'
+
+    // Hytale API (placeholder)
+    // compileOnly 'net.hytale:hytale-api:1.0.0'
+}
+
+jar {
+    archiveBaseName = 'voicechat-server'
+
+    manifest {
+        attributes(
+            'Implementation-Title': 'VoiceChat Server',
+            'Implementation-Version': project.version,
+            'Main-Class': 'com.voicechat.server.VoiceChatPlugin'
+        )
+    }
+
+    // Include dependencies in jar
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
