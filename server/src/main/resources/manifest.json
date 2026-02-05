@@ -1,7 +1,10 @@
 {
-  "Group": "VoiceChat",
-  "Name": "VoiceChat-Server",
-  "Main": "com.voicechat.server.VoiceChatPlugin",
-  "Version": "1.0.0",
-  "Description": "Voice Chat Mod"
+  "id": "voicechat",
+  "name": "VoiceChat",
+  "version": "1.0.0",
+  "description": "Proximity-based voice chat plugin with 3D spatial audio and Opus codec",
+  "authors": ["VoiceChat Team"],
+  "entrypoint": "com.voicechat.server.VoiceChatPlugin",
+  "dependencies": [],
+  "minHytaleVersion": "1.0.0"
 }

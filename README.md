@@ -137,16 +137,44 @@ A proximity-based voice chat plugin for Hytale with 3D spatial audio, occlusion,
 
 ## Installation
 
+### Prerequisites
+
+1. **HytaleServer.jar** - Download from official Hytale sources
+2. Place `HytaleServer.jar` in the `libs/` directory
+3. Java 25 JDK installed
+
 ### Server
-1. Copy `server/build/libs/voicechat-server-1.0.0.jar` to `plugins/` folder
-2. Start the server
-3. Configure `plugins/VoiceChat/config.json` as needed
-4. Restart or reload the server
+1. Build the plugin:
+   ```bash
+   ./gradlew :server:build
+   ```
+2. Copy `server/build/libs/voicechat-server-1.0.0.jar` to `plugins/` folder
+3. Start the server
+4. Configure `plugins/VoiceChat/config.json` as needed
+5. Restart or reload the server
 
 ### Client
-1. Copy `client/build/libs/voicechat-client-1.0.0.jar` to `mods/` folder
-2. Start Hytale
-3. Configure settings in-game or edit `config/voicechat/client.json`
+1. Build the client:
+   ```bash
+   ./gradlew :client:build
+   ```
+2. Copy `client/build/libs/voicechat-client-1.0.0.jar` to `mods/` folder
+3. Start Hytale
+4. Configure settings in-game or edit `config/voicechat/client.json`
+
+## Hytale API Integration
+
+The plugin is structured to work with the Hytale API. Some integration points need completion:
+
+- ✅ Plugin structure (JavaPlugin)
+- ✅ Command registration (CommandBase)
+- ✅ Manifest.json configuration
+- ⏳ Event listeners (player join/quit)
+- ⏳ Position tracking (scheduled task)
+- ⏳ Block occlusion (world API)
+- ⏳ Player lookup (server API)
+
+See [HYTALE_API_INTEGRATION.md](HYTALE_API_INTEGRATION.md) for detailed integration guide.
 
 ## Dependencies
 
@@ -218,4 +246,6 @@ MIT License - See LICENSE file for details
 ## Credits
 
 - Opus codec: Concentus library
+- Hytale Plugin Template: [realBritakee/hytale-template-plugin](https://github.com/realBritakee/hytale-template-plugin)
 - Inspired by Simple Voice Chat mod for Minecraft
+- Hytale modding community for documentation and support

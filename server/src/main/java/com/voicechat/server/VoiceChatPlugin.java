@@ -140,13 +140,21 @@ public class VoiceChatPlugin extends JavaPlugin {
     }
 
     private void registerEvents() {
-        // TODO: Register player join/quit listeners
         LogUtils.info("Registering event listeners...");
+        // Event listeners will be registered here when Hytale API is available
+        // For now, we'll use the PlayerConnectionListener directly
     }
 
     private void registerCommands() {
-        // TODO: Register voicechat command
         LogUtils.info("Registering commands...");
+        try {
+            this.getCommandRegistry().registerCommand(
+                new com.voicechat.server.command.VoiceChatCommand(this)
+            );
+            LogUtils.info("Commands registered successfully");
+        } catch (Exception e) {
+            LogUtils.error("Failed to register commands: " + e.getMessage());
+        }
     }
 
     public VoiceChatConfig getConfig() {

@@ -8,8 +8,11 @@ dependencies {
     // Logging implementation
     implementation 'ch.qos.logback:logback-classic:1.4.11'
 
-    // Hytale API (placeholder)
-    // compileOnly 'net.hytale:hytale-api:1.0.0'
+    // Hytale Server API (provided by server at runtime)
+    compileOnly files('../libs/HytaleServer.jar')
+
+    // Gson for JSON
+    implementation 'com.google.code.gson:gson:2.10.1'
 }
 
 jar {

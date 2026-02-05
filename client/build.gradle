@@ -5,8 +5,8 @@ plugins {
 dependencies {
     implementation project(':common')
 
-    // Opus codec library (using concentus-java, pure Java implementation)
-    implementation 'org.concentus:concentus:1.0.0'
+    // Opus codec library (using concentus-java from JitPack)
+    implementation 'com.github.lostromb:concentus:1.1.2'
 
     // Audio processing
     implementation 'org.gagravarr:vorbis-java-core:0.8'
