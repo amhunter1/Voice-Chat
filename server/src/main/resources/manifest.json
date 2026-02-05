@@ -1,0 +1,7 @@
+{
+  "Group": "VoiceChat",
+  "Name": "VoiceChat-Server",
+  "Main": "com.voicechat.server.VoiceChatPlugin",
+  "Version": "1.0.0",
+  "Description": "Voice Chat Mod"
+}

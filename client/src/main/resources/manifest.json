@@ -1,0 +1,11 @@
+{
+    "Group": "VoiceChat",
+    "Name": "VoiceChat-Client",
+    "Main": "com.voicechat.client.VoiceChatClientMod",
+    "Version": "${version}",
+    "Description": "${description}",
+    "Authors": [
+        "melut",
+        "mirket"
+    ]
+}
