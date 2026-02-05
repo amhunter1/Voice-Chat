@@ -1,0 +1,29 @@
+{
+  "network": {
+    "voicePort": 24454,
+    "maxPacketSize": 2048,
+    "keepAliveInterval": 5000
+  },
+  "audio": {
+    "normalDistance": 64,
+    "whisperDistance": 8,
+    "shoutDistance": 128,
+    "fadeStartPercent": 0.5,
+    "bitrate": 24000
+  },
+  "occlusion": {
+    "enabled": true,
+    "maxBlocksChecked": 16,
+    "attenuationPerBlock": 0.15
+  },
+  "performance": {
+    "maxPlayersPerPacket": 50,
+    "updateInterval": 50,
+    "cacheExpirationMs": 10000
+  },
+  "security": {
+    "enableRateLimiting": true,
+    "maxPacketsPerSecond": 100,
+    "banDuration": 300000
+  }
+}

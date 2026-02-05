@@ -1,0 +1,30 @@
+{
+  "audio": {
+    "inputVolume": 1.0,
+    "outputVolume": 1.0,
+    "voiceActivationThreshold": 0.05,
+    "microphoneDevice": "default",
+    "speakerDevice": "default"
+  },
+  "activation": {
+    "mode": "VOICE_ACTIVATION",
+    "pushToTalkKey": "V"
+  },
+  "ui": {
+    "showVoiceIndicator": true,
+    "showPlayerNames": true,
+    "hudPosition": "TOP_LEFT",
+    "hudScale": 1.0
+  },
+  "network": {
+    "serverAddress": "localhost",
+    "serverPort": 24454,
+    "autoConnect": true
+  },
+  "advanced": {
+    "enableNoiseGate": true,
+    "noiseGateThreshold": 0.02,
+    "enableEchoCancellation": false,
+    "audioBufferSize": 960
+  }
+}
