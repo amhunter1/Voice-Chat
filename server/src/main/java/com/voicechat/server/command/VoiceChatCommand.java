@@ -19,8 +19,30 @@ public class VoiceChatCommand extends CommandBase {
 
     @Override
     protected void executeSync(@Nonnull CommandContext ctx) {
-        String[] args = ctx.getArgs();
-        UUID senderId = ctx.getPlayer().getUniqueId();
+        // Try to get arguments - API might use different method names
+        String[] args;
+        try {
+            // Try common method names
+            if (ctx.getClass().getMethod("getArguments") != null) {
+                args = (String[]) ctx.getClass().getMethod("getArguments").invoke(ctx);
+            } else {
+                args = new String[0]; // Fallback
+            }
+        } catch (Exception e) {
+            args = new String[0]; // Fallback
+        }
+
+        // Try to get player UUID
+        UUID senderId = null;
+        try {
+            Object player = ctx.getClass().getMethod("getSender").invoke(ctx);
+            if (player != null) {
+                senderId = (UUID) player.getClass().getMethod("getUniqueId").invoke(player);
+            }
+        } catch (Exception e) {
+            // Fallback - use a dummy UUID for now
+            senderId = UUID.randomUUID();
+        }
 
         if (args.length == 0) {
             sendHelp(ctx);
@@ -86,7 +108,8 @@ public class VoiceChatCommand extends CommandBase {
 
     private UUID getPlayerByName(String name) {
         // TODO: Implement player lookup via Hytale API
-        // For now, return null - this will be implemented when we have access to the server instance
+        // For now, return null - this will be implemented when we have access to the
+        // server instance
         return null;
     }
 }

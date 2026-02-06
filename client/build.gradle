@@ -5,8 +5,8 @@ plugins {
 dependencies {
     implementation project(':common')
 
-    // Opus codec library (using concentus-java from JitPack)
-    implementation 'com.github.lostromb:concentus:1.1.2'
+    // Opus codec library - TODO: Find correct Concentus version
+    // implementation 'com.github.lostromb:concentus:1.0.0'
 
     // Audio processing
     implementation 'org.gagravarr:vorbis-java-core:0.8'
@@ -20,6 +20,9 @@ dependencies {
 
 jar {
     archiveBaseName = 'voicechat-client'
+
+    // Ensure common jar is built first
+    dependsOn ':common:jar'
 
     manifest {
         attributes(

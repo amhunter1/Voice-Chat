@@ -63,6 +63,28 @@ public class ClientConfig {
         audio.voiceActivationThreshold = threshold;
     }
 
+    // Additional legacy getters for backward compatibility
+    public int getPushToTalkKey() {
+        // Convert string key to keycode (simplified)
+        String key = activation.pushToTalkKey;
+        if (key == null || key.isEmpty()) {
+            return 86; // Default 'V' key
+        }
+        return key.charAt(0); // Simple conversion
+    }
+
+    public void setPushToTalkKey(int keyCode) {
+        activation.pushToTalkKey = String.valueOf((char) keyCode);
+    }
+
+    public void setOcclusionEnabled(boolean enabled) {
+        advanced.enableEchoCancellation = enabled;
+    }
+
+    public boolean isOcclusionEnabled() {
+        return advanced.enableEchoCancellation;
+    }
+
     public static class AudioSettings {
         private float inputVolume = 1.0f;
         private float outputVolume = 1.0f;

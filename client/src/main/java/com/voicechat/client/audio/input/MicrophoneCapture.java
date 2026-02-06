@@ -4,7 +4,6 @@ import com.voicechat.client.VoiceChatClientMod;
 import com.voicechat.client.audio.codec.VoiceOpusEncoder;
 import com.voicechat.common.audio.AudioConstants;
 import com.voicechat.common.network.packet.ActivationMode;
-import org.concentus.OpusException;
 
 import javax.sound.sampled.*;
 import java.util.concurrent.ExecutorService;
@@ -24,11 +23,7 @@ public class MicrophoneCapture {
 
     public MicrophoneCapture(VoiceChatClientMod mod) {
         this.mod = mod;
-        try {
-            this.encoder = new VoiceOpusEncoder();
-        } catch (OpusException e) {
-            LOGGER.log(Level.SEVERE, "Failed to initialize Opus encoder", e);
-        }
+        this.encoder = new VoiceOpusEncoder();
     }
 
     public void start() {
@@ -39,11 +34,11 @@ public class MicrophoneCapture {
 
         try {
             AudioFormat format = new AudioFormat(
-                AudioConstants.SAMPLE_RATE,
-                16, // 16-bit
-                AudioConstants.CHANNELS,
-                true, // signed
-                false // little-endian
+                    AudioConstants.SAMPLE_RATE,
+                    16, // 16-bit
+                    AudioConstants.CHANNELS,
+                    true, // signed
+                    false // little-endian
             );
 
             DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);

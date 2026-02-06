@@ -18,6 +18,9 @@ dependencies {
 jar {
     archiveBaseName = 'voicechat-server'
 
+    // Ensure common jar is built first
+    dependsOn ':common:jar'
+
     manifest {
         attributes(
             'Implementation-Title': 'VoiceChat Server',

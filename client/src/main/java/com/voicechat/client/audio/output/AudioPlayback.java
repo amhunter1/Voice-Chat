@@ -4,7 +4,6 @@ import com.voicechat.client.VoiceChatClientMod;
 import com.voicechat.client.audio.codec.VoiceOpusDecoder;
 import com.voicechat.common.audio.AudioConstants;
 import com.voicechat.common.network.packet.VoiceBroadcastPacket;
-import org.concentus.OpusException;
 
 import javax.sound.sampled.*;
 import java.util.Map;
@@ -24,11 +23,7 @@ public class AudioPlayback {
 
     public AudioPlayback(VoiceChatClientMod mod) {
         this.mod = mod;
-        try {
-            this.decoder = new VoiceOpusDecoder();
-        } catch (OpusException e) {
-            LOGGER.log(Level.SEVERE, "Failed to initialize Opus decoder", e);
-        }
+        this.decoder = new VoiceOpusDecoder();
     }
 
     public void start() {
@@ -64,7 +59,7 @@ public class AudioPlayback {
                 return;
             }
 
-            byte[] decoded = decoder.decode(packet.getOpusData());
+            byte[] decoded = decoder.decodeBytes(packet.getOpusData());
             if (decoded == null) {
                 LOGGER.warning("Failed to decode audio data");
                 return;
@@ -85,11 +80,11 @@ public class AudioPlayback {
     private SourceDataLine createLine(UUID playerId) {
         try {
             AudioFormat format = new AudioFormat(
-                AudioConstants.SAMPLE_RATE,
-                16, // 16-bit
-                AudioConstants.CHANNELS,
-                true, // signed
-                false // little-endian
+                    AudioConstants.SAMPLE_RATE,
+                    16, // 16-bit
+                    AudioConstants.CHANNELS,
+                    true, // signed
+                    false // little-endian
             );
 
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);

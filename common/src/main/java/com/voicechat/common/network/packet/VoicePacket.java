@@ -1,5 +1,7 @@
 package com.voicechat.common.network.packet;
 
+import com.voicechat.common.network.protocol.PacketType;
+
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
