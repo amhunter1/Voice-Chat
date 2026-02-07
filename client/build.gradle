@@ -5,8 +5,15 @@ plugins {
 dependencies {
     implementation project(':common')
 
-    // Opus codec library - TODO: Find correct Concentus version
-    // implementation 'com.github.lostromb:concentus:1.0.0'
+    // LWJGL OpenAL for audio playback and capture
+    def lwjglVersion = "3.3.3"
+    def lwjglNatives = "natives-windows" // Will be platform-specific
+    
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-openal"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
 
     // Audio processing
     implementation 'org.gagravarr:vorbis-java-core:0.8'
