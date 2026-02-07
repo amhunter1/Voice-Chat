@@ -11,6 +11,9 @@ dependencies {
 
     // Hytale API (placeholder - adjust when official API is available)
     // compileOnly 'net.hytale:hytale-api:1.0.0'
+    
+    // Note: Opus codec will be implemented using JNI with native libraries
+    // Native libraries will be bundled in the distribution package
 }
 
 jar {
